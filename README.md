@@ -9,7 +9,7 @@ Automates the full application workflow using LangGraph agents, local LLM (Ollam
 
 > Form submission → 4 AI agents → ML prediction → APPROVE/DECLINE + enablement recommendations
 
-![Pipeline](docs/pipeline_flow.png)
+![Pipeline](docs/Screenshot 2026-02-19 024148.png)
 
 ---
 
@@ -191,7 +191,7 @@ Traces every LLM call, agent step, token count, and latency across the full pipe
 
 ## 📄 Solution Summary
 
-See [docs/solution_summary.md](docs/solution_summary.md) for the full 10-page solution design document including architecture decisions, tool justifications, and future improvements.
+See [docs/solution_summary.docx](docs/solution_summary.docx) for the full 10-page solution design document including architecture decisions, tool justifications, and future improvements.
 
 ---
 
