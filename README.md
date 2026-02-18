@@ -1,7 +1,8 @@
 # 🏛️ Social Support AI — Abu Dhabi Government (DGE)
 
-AI-powered social support eligibility assessment system built for the XDigit / DGE technical assessment.
-Automates the full application workflow using LangGraph agents, local LLM (Ollama), and a RandomForest ML model — delivering decisions in minutes instead of 5-20 working days.
+AI-powered social support eligibility assessment system for government social security departments. 
+Automates the full application workflow using LangGraph agents, a locally hosted LLM (Ollama llama3), 
+and a RandomForest ML model — reducing application processing time from days to minutes.
 
 ---
 
@@ -196,12 +197,7 @@ See [docs/solution_summary.docx](docs/solution_summary.docx) for the full 10-pag
 ---
 
 ## 👤 Author
-
-Built for XDigit / DGE Senior AI/ML Engineer Assessment
+**Sarabjit** — Senior AI/ML Engineer  
+Specialising in agentic AI systems, LLM pipelines, and government digital transformation
 ```
 
-Now commit:
-```
-git add .
-git commit -m "docs: add full README with setup instructions and architecture"
-git push origin main
