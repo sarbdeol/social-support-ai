@@ -2,7 +2,6 @@ import joblib
 import numpy as np
 import pandas as pd
 
-# Load all artifacts once at startup
 model         = joblib.load("ml/artifacts/model.joblib")
 explainer     = joblib.load("ml/artifacts/shap_explainer.joblib")
 le_employment = joblib.load("ml/artifacts/le_employment.joblib")
@@ -11,10 +10,6 @@ FEATURES      = joblib.load("ml/artifacts/features.joblib")
 
 
 def predict(applicant: dict) -> dict:
-    """
-    Takes applicant dict, returns prediction + confidence + SHAP explanation
-    """
-    # Encode categoricals
     emp = le_employment.transform([applicant['employment_status']])[0]
     hou = le_housing.transform([applicant['housing_type']])[0]
 
@@ -32,17 +27,27 @@ def predict(applicant: dict) -> dict:
         'housing_type':       hou
     }])
 
-    prediction  = model.predict(row)[0]
-    proba       = model.predict_proba(row)[0]
-    confidence  = round(float(max(proba)) * 100, 1)
+    prediction = model.predict(row)[0]
+    proba      = model.predict_proba(row)[0]
+    confidence = round(float(max(proba)) * 100, 1)
 
-    # SHAP values for this prediction
-    shap_vals   = explainer.shap_values(row)
-    shap_row    = shap_vals[1][0] if prediction == 1 else shap_vals[0][0]
-    explanation = dict(zip(FEATURES, [round(float(v), 4) for v in shap_row]))
+    # SHAP — handle both old and new shap output formats
+    shap_vals = explainer.shap_values(row)
+
+    if isinstance(shap_vals, list):
+        # old format: list of arrays per class
+        raw = shap_vals[1][0] if len(shap_vals) > 1 else shap_vals[0][0]
+    else:
+        # new format: single 3D array (n_samples, n_features, n_classes)
+        if shap_vals.ndim == 3:
+            raw = shap_vals[0, :, 1] if shap_vals.shape[2] > 1 else shap_vals[0, :, 0]
+        else:
+            raw = shap_vals[0]
+
+    explanation = {feat: round(float(val), 4) for feat, val in zip(FEATURES, raw)}
 
     return {
         "decision":    "APPROVE" if prediction == 1 else "DECLINE",
         "confidence":  confidence,
-        "explanation": explanation  # SHAP values per feature
+        "explanation": explanation
     }
