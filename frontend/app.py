@@ -38,8 +38,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ── HEADER ────────────────────────────────────────────
-st.title("🏛️ Social Support AI — Abu Dhabi Government")
-st.caption("AI-powered social support eligibility assessment · Powered by LangGraph + Ollama (llama3)")
+st.title("🏛️ Social Support AI Platform")
+st.caption("AI-powered eligibility assessment · LangGraph · Ollama (llama3) · RandomForest")
 st.divider()
 
 # ── LAYOUT ────────────────────────────────────────────

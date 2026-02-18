@@ -1,8 +1,8 @@
-# 🏛️ Social Support AI — Abu Dhabi Government (DGE)
+# 🏛️ Social Support AI Platform
 
-AI-powered social support eligibility assessment system for government social security departments. 
-Automates the full application workflow using LangGraph agents, a locally hosted LLM (Ollama llama3), 
-and a RandomForest ML model — reducing application processing time from days to minutes.
+AI-powered social support eligibility assessment platform. Automates the full application 
+workflow using LangGraph agents, a locally hosted LLM (Ollama llama3), and a RandomForest 
+ML model — reducing application processing time from days to minutes.
 
 ---
 
