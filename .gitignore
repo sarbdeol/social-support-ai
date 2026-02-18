@@ -12,13 +12,13 @@ __pycache__/
 .env
 
 # Data files
-data/uploads/
-*.csv
-*.json
+!data/uploads/
+!data/synthetic/*.csv
+!data/synthetic/*.json
 
 # ML model files
 *.pkl
-*.joblib
+!ml/artifacts/*.joblib
 
 # OS files
 .DS_Store
